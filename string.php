@@ -12,7 +12,7 @@ echo "<h3>Vowel Count</h3>";
 
 foreach ($strings as $string) {
     $count = 0;
-    $letters = str_split(strtolower($string)); // শব্দটিকে ছোট হাতের অক্ষরে পরিণত করে আলাদা করা
+    $letters = str_split(strtolower($string));
 
     foreach ($letters as $letter) {
         if ($letter == 'a' || $letter == 'e' || $letter == 'i' || $letter == 'o' || $letter == 'u') {
@@ -33,13 +33,33 @@ endforeach;
 
 echo "</ul>";
 
-//foreach ($strings as $string) {
-// স্বরবর্ণ গণনা
-// $vowelCount = preg_match_all('/[aeiou]/i', $string);
 
-// স্ট্রিং উল্টানো
-// $reversedString = strrev($string);
+?>
+<?php
+$strings = ["Hello", "World", "PHP", "Programming"];
 
-// ফলাফল প্রদর্শন
-// echo "Original String: $string, Vowel Count: $vowelCount, Reversed String: $reversedString\n\n";
-//}
+echo "<h3>List of Strings</h3>";
+foreach ($strings as $string):
+    echo "• " . $string . "<br>";
+endforeach;
+
+echo "<h3>Vowel Count and Reversed Strings</h3>";
+echo "<ul>";
+
+foreach ($strings as $string) {
+
+    $count = 0;
+    $letters = str_split(strtolower($string));
+    foreach ($letters as $letter) {
+        if (in_array($letter, ['a', 'e', 'i', 'o', 'u'])) {
+            $count++;
+        }
+    }
+
+    $reversed = strrev($string);
+
+    echo "<li>Original String: $string, Vowel Count: $count, Reversed String: $reversed</li>";
+}
+
+echo "</ul>";
+?>
